@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Valentine's Day ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff4f81;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4f81;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff2e6e;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        /* Date ideas */
+        .idea {
+            background: #fff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory {
+            width: 250px;
+            height: 300px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            /* VERY IMPORTANT */
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Makes image fit properly */
+            border-radius: 20px;
+        }
+
+
+        /* Envelope */
+        .envelope {
+            width: 200px;
+            height: 120px;
+            background: #f3eeef;
+            position: relative;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff6b9c;
+            clip-path: polygon(0 0, 100% 0, 50% 60%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* Card Colors */
+        .brown {
+            background: #4e342e;
+        }
+
+        .olive {
+            background: #8d8c3f;
+        }
+
+        .red {
+            background: #e53935;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SECTION 1 -->
+    <section>
+        <div class="card">
+            <h1>Happy Valentine’s Day ❤️</h1>
+            <p>Every day with you feels special but today I want to remind you how much I love you 💕</p>
+            <button onclick="nextSection(1)">Click for a Surprise 💖</button>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="section1" class="hidden">
+        <h1>Good choice 🥰</h1>
+        <p>You unlocked unlimited hugs, kisses & cuddles 💋</p>
+        <button onclick="nextSection(2)">Continue 💞</button>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="section2" class="hidden">
+        <h1>Now you're stuck with me forever ♾️</h1>
+        <p>Actually... No? 😈</p>
+        <button onclick="nextSection(3)">Too Late 😝</button>
+    </section>
+
+    <!-- SECTION 4 DATE IDEAS -->
+    <section id="section3" class="hidden">
+        <h1>Our Virtual Date Ideas 📱</h1>
+
+        <div class="idea">🍿 Netflix party + video call</div>
+        <div class="idea">🍕 Order same food & judge each other</div>
+        <div class="idea">🌙 Late night talks</div>
+        <div class="idea">🎵 Playlist exchange</div>
+        <div class="idea">🎮 Play games together</div>
+
+        <button onclick="nextSection(4)">Next Surprise 🎁</button>
+    </section>
+
+    <!-- SECTION 5 MEMORIES -->
+    <section id="section4" class="hidden">
+        <h1>Our Favorite Memories 📸</h1>
+        <div class="grid">
+            <div class="memory" onclick="reveal(this, 'photo1.jpeg')">🎁</div>
+            <div class="memory" onclick="reveal(this,'photo2.jpeg')">🎁</div>
+            <div class="memory" onclick="reveal(this,'photo3.jpeg')">🎁</div>
+        </div>
+
+        <button onclick="nextSection(5)">Secret Note 💌</button>
+    </section>
+
+    <!-- SECTION 6 SECRET NOTE -->
+    <section id="section5" class="hidden">
+        <h1>A Secret Note For You ❤️</h1>
+        <p>Click the envelope to open it...</p>
+        <div class="envelope" onclick="openNote()"></div>
+        <p id="noteText" class="hidden">
+            You are my favorite person, my safe place, and my forever ❤️
+        </p>
+
+        <button onclick="nextSection(6)">Love You ❤️</button>
+    </section>
+
+    <script>
+
+        function nextSection(num) {
+            document.getElementById("section" + num).classList.remove("hidden");
+            window.scrollBy(0, window.innerHeight);
+        }
+
+        function reveal(el, imagePath) {
+            el.innerHTML = `<img src="${imagePath}" class="memory-img">`;
+        }
+
+
+        function openNote() {
+            document.getElementById("noteText").classList.remove("hidden");
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+
+        setInterval(createHeart, 800);
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
